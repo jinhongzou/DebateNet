@@ -210,7 +210,7 @@ class PydanticAgent():
                            system_prompt=system_prompt,
                            model_settings={'tool_choice': 'auto'},
                            retries=3,
-                           history_processors=[completion_detector_hook]
+                           #history_processors=[completion_detector_hook]
                            )
     
         self.message_history: list[ModelMessage] = []
