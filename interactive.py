@@ -17,11 +17,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
-from typing import Union,Literal
+from pydantic_ai.common_tools.tavily import tavily_search_tool
 
-from code.utils.pydantic_agent import Classifier
+from code.utils.dspy_models import Classifier
 from code.utils.config4prompt import debate_prompt_json
 from code.utils.debate import Debate
+
+
+tavily_api_key = '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'
+siliconflow_api_key ='sk-ruascruyqmbeyiojufkeqkerqdczwprkbkdaalbdakihywfo'
+
+'''
+def tavily_search_tool(api_key: str):
+    """Creates a Tavily search tool.
+
+    Args:
+        api_key: The Tavily API key.
+
+            You can get one by signing up at [https://app.tavily.com/home](https://app.tavily.com/home).
+    """
+    return Tool(
+        TavilySearchTool(client=AsyncTavilyClient(api_key)).__call__,
+        name='tavily_search',
+        description='Searches Tavily for the given query and returns the results.',
+    )
+'''
 
 if __name__ == "__main__":
 
@@ -30,17 +50,18 @@ if __name__ == "__main__":
 
     classifyagent = Classifier(#model='openai/Qwen/Qwen2.5-32B-Instruct', 
                                model='openai/Qwen/Qwen2.5-7B-Instruct',
-                               api_key='sk-ruascruyqmbeyiojufkeqkerqdczwprkbkdaalbdakihywfo', 
+                               api_key=siliconflow_api_key, 
                                api_base='https://api.siliconflow.cn/v1')
 
     config =  debate_prompt_json()
     debate = Debate(max_round=3,
                     model_name="Qwen/Qwen2.5-7B-Instruct",
-                    openai_api_key="sk-ruascruyqmbeyiojufkeqkerqdczwprkbkdaalbdakihywfo", 
+                    openai_api_key=siliconflow_api_key, 
+                    tools=[tavily_search_tool(tavily_api_key)],
                     config=config, 
                     temperature=0, 
                     sleep_time=0)
-    
+
     chat_model=''
 
     while True:
@@ -63,11 +84,11 @@ if __name__ == "__main__":
             else :# 辩论模式
                 print(f"This is a debate question. Let's start the debate on the topic ...\n")
                 #debate.run()
-                debate.run_loop(debate_topic) #重复执行有问题？？？？？？？
+                debate.run_loop(debate_topic)
                 response= debate.get_answer()
                 print(f"\nThis is the debate result: {response}")
 
-        elif chat_model == "2": # 人工模式
+        elif chat_model == "2": # 单一模型
             classify=classifyagent.classify_question(debate_topic)
 
             if classify.Category == 'Answer':

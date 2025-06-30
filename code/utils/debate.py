@@ -15,14 +15,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
-
+import pydantic_ai
 from pydantic_ai.providers.openai import OpenAIProvider
 from pydantic_ai.models.openai import OpenAIModel
-import pydantic_ai
+from pydantic_ai.tools import Tool, ToolFuncEither, AgentDepsT
+
+from collections.abc import  Sequence
+
 from typing import Union,Literal
 
 from .debug_logfire import logfire
-from .pydantic_agent import PydanticAgent, Evaluator, Moderator
+from .pydantic_agent import PydanticAgent
+from .dspy_models import Evaluator, Moderator
 
 # 定义辩论双方的角色名称
 DEBATER_ROLES = [
@@ -40,9 +44,12 @@ class DebatePlayer(PydanticAgent):
         name: str,
         model: OpenAIModel,
         output_type: str,
-        system_prompt: str = "You are a helpful assistant."
+        system_prompt: str = "You are a helpful assistant.",
+        tools: Sequence[
+                    Tool[AgentDepsT] | ToolFuncEither[AgentDepsT, ...]
+                ] = (),
     ) -> None:
-        super().__init__(name, model, output_type, system_prompt)
+        super().__init__(name, model, output_type, system_prompt, tools)
 
 
 class Debate:
@@ -52,6 +59,9 @@ class Debate:
             num_players: int=3, 
             openai_api_key: str=None,
             base_url: str='https://api.siliconflow.cn/v1',
+            tools: Sequence[
+                    Tool[AgentDepsT] | ToolFuncEither[AgentDepsT, ...]
+                ] = (),
             config: dict=None,
             max_round: int=3,
             sleep_time: float=0
@@ -62,7 +72,9 @@ class Debate:
         self.num_players = num_players
         self.openai_api_key = openai_api_key
         self.base_url = base_url
-        
+        self.tools=tools
+
+
         self.config = config
         self.config_init = config.copy()
 
@@ -107,7 +119,8 @@ class Debate:
                 name=name,
                 model=self.agent_model,
                 output_type=str,
-                system_prompt=self.config['player_meta_prompt']
+                system_prompt=self.config['player_meta_prompt'],
+                tools=self.tools
             )
             for name in DEBATER_ROLES
         ]
