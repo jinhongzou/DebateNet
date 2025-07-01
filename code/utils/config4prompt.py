@@ -1,4 +1,3 @@
-
 ### 基础信息字段
 debate_topic = ""  # 辩论主题，当前为空
 base_answer = ""   # 基础答案，当前为空
@@ -17,8 +16,6 @@ Your responsibilities include:
 - Maintaining a firm, rational, and efficient tone.
 
 """
-# [[ ## The debate topic  ## ]]
-# ##debate_topic##
 
 ### 主持人角色提示模板（Moderator Meta Prompt）
 moderator_meta_prompt = """You are a moderator. There will be two debaters involved in a debate. They will present their answers and discuss their perspectives on the following topic: "##debate_topic##"
@@ -75,34 +72,6 @@ reason: [Your detailed evaluation]
 Example:
 supported_side: Affirmative
 reason: The Affirmative side provided more compelling arguments based on current economic trends."""
-#debate_answer: [The original full content of the position presented by the side you support, without modification or summary. If no preference, return "None".]
-
-
-### 最终判断阶段提示 1（Judge Prompt Last 1）
-judge_prompt_last1 = """[[ ## Affirmative side arguing ## ]]:
-##aff_ans##
-
-[[ ## Negative side arguing ## ]]:
-##neg_ans##
-
-Now, what answer candidates do we have? Present them without reasons."""
-
-### 最终判断阶段提示 2（Judge Prompt Last 2）
-# modify by zoujinhong 20250626
-judge_prompt_last2 = """Therefore, ##debate_topic##
-
-please carefully analyze the current situation. You should consider both supporting and opposing factors or arguments, and evaluate which side is more convincing.
-
-Summarize your analysis, state which position you believe is more reasonable, and provide a **comprehensive final answer** that integrates insights from both sides.
-
-Now, please output your response in the following JSON format:
-{
-  "Reason": "Your detailed analysis of the situation and why you support a certain position",
-  "debate_answer": [The original full content of the position presented by the side you support, without modification or summary. If no preference, return "None".]
-  "Final_Answer": "The full content of the position you support based on your analysis"
-}
-
-Please strictly output in JSON format without any extra content."""
 
 ### 辩论交互提示（Debate Prompt）
 debate_prompt = """##oppo_ans##\n\nDo you agree with my perspective? Please provide your reasons and answer."""
@@ -140,63 +109,6 @@ final_answer_prompt='''
 
 '''
 
-
-# DSPy的prompt 
-# create by zoujinhong 20250626
-judge_prompt_final='''
-
-System message:
-
-Your input fields are:
-1. `debate_topic` (str): The topic of the debate.
-2. `affirmative_side_arguing` (str): The arguments presented by the affirmative side.
-3. `negative_side_arguing` (str): The arguments presented by the negative side.
-Your output fields are:
-1. `reasoning` (str):A detailed analysis comparing both sides, evaluating the strength and validity of their arguments, and explaining the basis for the final judgment.
-2. `supported_side` Literal['Affirmative', 'Negative'] : Your final stance on which side presents a more convincing case regarding the `debate_topic`.
-3. `debate_answer` (str): The original full content of the position presented by the side you support, without modification or summary. If no preference, return "None".
-All interactions will be structured in the following way, with the appropriate values filled in.
-
-[[ ## affirmative_side_arguing ## ]]
-{affirmative_side_arguing}
-
-[[ ## negative_side_arguing ## ]]
-{negative_side_arguing}
-
-[[ ## reasoning ## ]]
-{reasoning}
-
-[[ ## {supported_side} ## ]]
-{supported_side}
-
-[[ ## debate_answer ## ]]
-{debate_answer}
-
-[[ ## completed ## ]]
-In adhering to this structure, your objective is: 
-        please carefully analyze the current situation. You should consider both supporting and opposing factors or arguments, and evaluate which side is more convincing.
-
-        You are given a list of tools to handle user request, and you should decide the right tool to use in order to
-        fullfil users' request.
-
-
-User message:
-
-[[ ## debate_topic ## ]]
-##debate_topic##
-
-[[ ## affirmative_side_arguing ## ]]
-##affirmative_side_arguing##
-
-[[ ## negative_side_arguing ## ]]
-##negative_side_arguing##
-
-Respond with the corresponding output fields, starting with the field `[[ ## reasoning ## ]]`, then `[[ ## supported_side ## ]]` , then `[[ ## debate_answer ## ]]`, and then ending with the marker for `[[ ## completed ## ]]`.
-
-'''
-
-
-
 # =============================================================================================
 # 函数定义：将变量打包成 JSON 字符串
 # 支持两种模式：
@@ -214,9 +126,6 @@ def debate_prompt_json(
     affirmative_prompt=affirmative_prompt,
     negative_prompt=negative_prompt,
     moderator_prompt=moderator_prompt,
-    #judge_prompt_last1=judge_prompt_last1,
-    #judge_prompt_last2=judge_prompt_last2,
-    #judge_prompt_final=judge_prompt_final,
     judge_evaluator_prompt=judge_evaluator_prompt,
     final_answer_prompt=final_answer_prompt,
     debate_prompt= debate_prompt,
@@ -241,9 +150,6 @@ def debate_prompt_json(
         "affirmative_prompt": affirmative_prompt,
         "negative_prompt": negative_prompt,
         "moderator_prompt": moderator_prompt,
-        #"judge_prompt_last1": judge_prompt_last1,
-        #"judge_prompt_last2": judge_prompt_last2,
-        #"judge_prompt_final": judge_prompt_final,
         "judge_evaluator_prompt": judge_evaluator_prompt,
         "final_answer_prompt": final_answer_prompt,
         "debate_prompt": debate_prompt,
