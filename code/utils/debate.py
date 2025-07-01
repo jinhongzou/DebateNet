@@ -151,11 +151,11 @@ class Debate:
 
 
         # 答案评估器 | DSPy
-        signature = "user_question -> answer: str"
+        signature = "context -> answer: str"
         instructions = (
             "You are a helpful assistant tasked with answering the user's question directly, accurately, and in alignment with the provided context. Follow these steps:\n\n"
             "1. Carefully read and fully understand the user's question: `[[ ## user question ## ]]`.\n"
-            "2. Analyze the provided context thoroughly to ensure your answer reflects its tone, perspective, and factual basis: `[[ ## Context ## ]]`.\n"
+            "2. Analyze the provided context thoroughly to ensure your answer reflects its tone, perspective, and factual basis: `[[ ## context ## ]]`.\n"
             "3. Construct an answer that is clear, concise, logically structured, and directly addresses the question.\n"
             "4. Maintain the style and format of the original context as closely as possible, avoiding markdown or any special formatting.\n"
             "5. If the question involves reasoning, analysis, or inference, clearly explain your thought process while staying grounded in the context.\n"
@@ -277,6 +277,8 @@ class Debate:
                 print(f'Debate completed by : Negative') 
                 self._set_supported_side('Affirmative')
                 break
+            else:
+                self._set_supported_side('')
 
         # 到达最大回合或主持人已经给出结论
         if self._has_supported_side():
@@ -392,9 +394,9 @@ class Debate:
 
         return False
 
-    def _set_supported_side(self, supported_side:Literal['Affirmative', 'Negative']) -> bool:
+    def _set_supported_side(self, supported_side:Literal['Affirmative', 'Negative','']) -> bool:
         """设置主持人支持的方"""
-        if supported_side not in ['Affirmative', 'Negative']:
+        if supported_side not in ['Affirmative', 'Negative','']:
             raise ValueError(f"Invalid side: {supported_side}. Must be one of ['Affirmative', 'Negative'].")
 
         self.mod_ans['supported_side'] = supported_side
@@ -430,7 +432,7 @@ class Debate:
 
         answer_prompt = (self.config['final_answer_prompt']
                         .replace('##user_question##', self.config['debate_topic'])
-                        .replace('##Context##', context))
+                        .replace('##context##', context))
     
-        return self.answer_eval.run(user_question=answer_prompt)
+        return self.answer_eval.run(context=answer_prompt)
 

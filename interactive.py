@@ -57,7 +57,7 @@ if __name__ == "__main__":
     debate = Debate(max_round=3,
                     model_name="Qwen/Qwen2.5-7B-Instruct",
                     openai_api_key=siliconflow_api_key, 
-                    tools=[tavily_search_tool(tavily_api_key)],
+                    #tools=[tavily_search_tool(tavily_api_key)],
                     config=config, 
                     temperature=0, 
                     sleep_time=0)

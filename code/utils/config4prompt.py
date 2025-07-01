@@ -133,8 +133,7 @@ judge_evaluator_prompt='''
 '''
 
 final_answer_prompt='''
-[[ ## Context ## ]]
-##Context##
+##context##
 
 [[ ## user question ## ]]
 ##user_question##
