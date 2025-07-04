@@ -65,7 +65,7 @@
   ```shell
   pip3 install -r requirements.txt
   ```
-* Set your openai API_KEY in `interactive.py`
+* Set your openai 秘药 in `interactive.py`
 
 **Run Interactive**
 
