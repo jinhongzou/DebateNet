@@ -2,12 +2,15 @@
   <img src="imgs/logo2.png" alt="Logo" width="400">
 </div>
 
+
 <h2 align="center" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #2c3e50; font-size: 2.5em; margin-top: 40px;">
   <span style="color: #e74c3c;">⚖️</span> <strong style="color: #2c3e50;">DebateNet</strong>
 </h2>
 <p align="center" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1.2em; color: #555; max-width: 800px; margin: 0 auto 40px;">
   ——基于大语言模型多智能体辩论框架
 </p>
+
+## English | [简体中文](README_zh-CN.md)
 
 
 ⚖️MAD框架（Multi-Agent Debate）是近期提出的一个新颖框架，通过构建一个具有交互性和对抗性的多智能体对话机制，模拟人类在面对不同观点时如何通过争论与修正不断逼近真理。以探索大型语言模型（LLMs）在复杂推理任务中逐步发展出的结构化推理与自我修正能力。
@@ -58,27 +61,24 @@
 </div>
 
 
-## Run
+## 运行
 
 **Preparation**
 
   ```shell
   pip3 install -r requirements.txt
   ```
-* Set your openai 秘药 in `interactive.py`
 
-**Run Interactive**
-
-如果你想亲自体验一下，可以在你的电脑上尝试运行这个交互式脚本。
+* 在 `interactive.py` 文件中，设置硅基流动的秘钥，执行交互脚本：
 
 ```shell
 python3 interactive.py
 ```
 
 
-## 主要结果
 ---
 
+## 主要结果
 #### 1、开放性话题:  
 
 <span style="color: #e74c3c; font-weight: bold; font-size: 1.2em;">示例1. 中国股市在2025年下半年会有起色</span>
@@ -398,8 +398,8 @@ $$
 
 ### 参考项目
 - **Multi-Agents-Debate**:<a href="https://github.com/Skytliang/Multi-Agents-Debate"> 基础框架基于Multi-Agents-Debate</a>
-- **DSPy**: 
-- **Pydantic_ai**: 
+- **DSPy**: https://github.com/stanfordnlp/dspy
+- **Pydantic_ai**: https://ai.pydantic.org.cn/
 
 ### 参考文献
 
@@ -409,18 +409,4 @@ $$
 - **MAPS**: <a href="https://arxiv.org/pdf/2305.04118.pdf">Exploring Human-Like Translation Strategy with Large Language Models</a> (arxiv 2023)
 - **Multi-Agent Debate**:<a href="https://arxiv.org/abs/2406.11776
 ">Improving Multi-Agent Debate with Sparse Communication Topology</a> (arxiv 2024)
-
-
-## Citation
-```
-@article{liang2023encouraging,
-  title={Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate},
-  author={Liang, Tian and He, Zhiwei and Jiao, Wenxiang and Wang, Xing and Wang, Yan and Wang, Rui and Yang, Yujiu and Tu, Zhaopeng and Shi, Shuming},
-  journal={arXiv preprint arXiv:2305.19118},
-  year={2023}
-}
-```
-
-
-
 
