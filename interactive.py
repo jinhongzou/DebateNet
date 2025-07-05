@@ -23,10 +23,18 @@ from code.utils.dspy_models import Classifier
 from code.utils.config4prompt import debate_prompt_json
 from code.utils.debate import Debate
 
+from dotenv import load_dotenv
 
-tavily_api_key = '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'
-siliconflow_api_key ='sk-ruascruyqmbeyiojufkeqkerqdczwprkbkdaalbdakihywfo'
+# 加载环境变量文件（如果存在）
+load_dotenv()
 
+# 从环境变量中获取API密钥，如果没有设置则使用默认值（可选）
+tavily_api_key = os.getenv('TAVILY_API_KEY', 'your-default-key-if-any')
+siliconflow_api_key = os.getenv('SILICONFLOW_API_KEY', 'your-default-key-if-any')
+
+# 如果没有设置环境变量，可以提示用户或抛出异常
+if not tavily_api_key or not siliconflow_api_key:
+    raise ValueError("API keys not found. Please set TAVILY_API_KEY and SILICONFLOW_API_KEY environment variables.")
 '''
 def tavily_search_tool(api_key: str):
     """Creates a Tavily search tool.

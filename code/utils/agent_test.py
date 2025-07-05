@@ -14,7 +14,7 @@ if __name__ == "__main__33":
         model_name='Qwen/Qwen2.5-7B-Instruct',
         provider=OpenAIProvider(
             base_url='https://api.siliconflow.cn/v1',
-            api_key='sk-ruascruyqmbeyiojufkeqkerqdczwprkbkdaalbdakihywfo'
+            api_key=''
         ),
     )
 
@@ -39,7 +39,7 @@ if __name__ == "__main__22":
 
     classifyagent = Classifier(#model='openai/Qwen/Qwen3-8B', 
                                model='openai/Qwen/Qwen2.5-7B-Instruct',
-                               api_key='sk-ruascruyqmbeyiojufkeqkerqdczwprkbkdaalbdakihywfo', 
+                               api_key='sk-xxx', 
                                api_base='https://api.siliconflow.cn/v1')
 
 
@@ -55,7 +55,7 @@ if __name__ == "__main__":
 
     debatejudgment = DebateJudgment(model='openai/Qwen/Qwen2.5-7B-Instruct', 
                                     #model='openai/Qwen/Qwen2.5-32B-Instruct',
-                                    api_key='sk-ruascruyqmbeyiojufkeqkerqdczwprkbkdaalbdakihywfo', 
+                                    api_key='sk-xxx', 
                                     api_base='https://api.siliconflow.cn/v1')
 
     debate_topic = '''
