@@ -7,61 +7,61 @@
   <span style="color: #e74c3c;">⚖️</span> <strong style="color: #2c3e50;">DebateNet</strong>
 </h2>
 <p align="center" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1.2em; color: #555; max-width: 800px; margin: 0 auto 40px;">
-  ——基于大语言模型多智能体辩论框架
+  ——Multi-Agent Debate Framework Based on Large Language Models
 </p>
 
-## English | [简体中文](README_zh-CN.md)
+## [English](README.md) | 简体中文
 
+### ⚖️MAD Framework (Multi-Agent Debate): An Innovative Approach
 
-⚖️MAD框架（Multi-Agent Debate）是近期提出的一个新颖框架，通过构建一个具有交互性和对抗性的多智能体对话机制，模拟人类在面对不同观点时如何通过争论与修正不断逼近真理。以探索大型语言模型（LLMs）在复杂推理任务中逐步发展出的结构化推理与自我修正能力。
+The MAD framework (Multi-Agent Debate) is a recently introduced innovative structure that simulates how humans approach and refine truths amidst differing viewpoints through argumentation and revision. This is achieved by establishing an interactive and adversarial multi-agent dialogue mechanism, aiming to explore how Large Language Models (LLMs) develop structured reasoning and self-corrective abilities in complex reasoning tasks.
 
-正如那句名言所说：
+As the famous quote goes:
 >
 > "Truth emerges from the clash of adverse ideas."
 >
-> "真理从对立观点的交锋中浮现"
->
 
-### 简要介绍
+### Brief Introduction
 
-近几年，随着大型语言模型在自然语言理解与生成方面的能力不断增强，其在认知行为层面的表现也引发了广泛的研究兴趣。例如，“自我反思（self-reflection）”作为一种重要的元认知能力，通常指个体对自身思维过程进行内省、评估与调整的过程。已有研究表明，LLMs 在多种复杂的 NLP 任务中也能表现出类似“自我反思”的行为，从而提升其推理准确性与一致性。
+In recent years, with the continuous enhancement of large language models' capabilities in natural language understanding and generation, their cognitive and behavioral performances have sparked widespread research interest. For instance, "self-reflection" as a significant metacognitive ability refers to the process where individuals introspect, evaluate, and adjust their own thought processes. Existing studies have shown that LLMs can exhibit behaviors similar to "self-reflection," improving their reasoning accuracy and consistency across various complex NLP tasks.
 
-然而，已有研究表明，仅依赖单一模型的内部反思机制往往存在局限。当模型陷入固有偏见、逻辑循环或推理退化（如“**思维退化（Degeneration of Thoughts, DoT）**”问题）时，由于缺乏来自外部视角的质疑与反馈，错误不仅难以被识别，反而可能被不断强化，从而导致推理质量下降。这种局限性主要体现在以下几个方面：
+However, research also indicates that relying solely on a single model's internal reflection mechanism often has limitations. When models fall into inherent biases, logical loops, or reasoning degradation (such as the "**Degeneration of Thoughts, DoT**" problem), errors are hard to identify and may be reinforced due to the lack of external perspective challenges and feedback, leading to a decline in reasoning quality. These limitations manifest in several aspects:
 
-- 1. **偏见与扭曲的认知**🤔
-自我反思过程可能受到先入为主的观念、认知偏差或非理性思维方式的影响。如果一个智能体在推理过程中未能识别并纠正这些偏见，其反思结果可能会偏离事实，甚至进一步加剧错误结论的形成。
+- 1. **Bias and Distorted Cognition**🤔
+The self-reflection process might be influenced by preconceived notions, cognitive biases, or irrational thinking patterns. If an agent fails to recognize and correct these biases during the reasoning process, its reflective outcomes could deviate from facts, potentially exacerbating erroneous conclusions.
 
-- 2. **僵化与抗拒改变**😬
-个体（或智能体）在面对新信息或不同观点时，可能表现出对既有信念的过度坚持，阻碍认知更新与修正。通过引入多个智能体之间的辩论机制，一个智能体的固有立场可以被另一个智能体的观点挑战与补充，从而促进更灵活、开放的思维演化💪。
+- 2. **Rigidity and Resistance to Change**😬
+When confronted with new information or different viewpoints, an individual (or agent) may overly adhere to existing beliefs, hindering cognitive updates and corrections. By introducing a debate mechanism among multiple agents, one agent's entrenched positions can be challenged and supplemented by another's perspectives, fostering more flexible and open-minded evolution of thoughts💪.
 
-- 3. **缺乏外部反馈**🧐
-自我反思本质上是一种内省过程，虽然有助于提升认知深度，但其有效性高度依赖于个体是否具备足够的元认知能力。而外部反馈则能提供新的视角、揭示盲点，并帮助识别自身推理中的漏洞。若忽视这一环节，智能体很可能错失关键的替代思路与批判性意见，进而限制其认知广度与准确性。
+- 3. **Lack of External Feedback**🧐
+Self-reflection is inherently an introspective process that enhances cognitive depth but relies heavily on whether the individual possesses adequate metacognitive skills. External feedback can offer new perspectives, uncover blind spots, and help identify flaws in one's reasoning. Ignoring this step may cause agents to miss critical alternative solutions and critical opinions, thereby limiting their cognitive breadth and accuracy.
 
-传统基于单一模型的反思机制在复杂推理任务中容易遭遇瓶颈。因此，提出了 MAD 框架——通过引入多个智能体之间的辩论新颖机制，使模型能够在观点交锋中不断修正错误、打破思维定式，并借助多角度的论证逐步接近更优解。该方法不仅提升了模型的推理鲁棒性，也为构建更具互动性与批判性的人工智能系统提供了新的思路。
+Traditional reflection mechanisms based on a single model easily encounter bottlenecks in complex reasoning tasks. Therefore, the MAD framework was proposed - by introducing a novel debating mechanism between multiple agents, enabling models to continuously correct errors, break down fixed mindsets, and gradually approach better solutions through multi-angle arguments. This method not only enhances the model's reasoning robustness but also provides new insights for building more interactive and critical artificial intelligence systems.
+
 
 <div align="center">
     <img width="80%" alt="MAD" src="imgs/image.png" />
     <p class="image-caption">Figure 1: Comparison between debate and reflection.</p>
 </div>
 
-通过所提出的 MAD 框架（Multi-Agent Debate）的多个智能体之间形成一种动态博弈与相互监督的机制，呈现出类似“以牙还牙”（tit-for-tat）的行为模式 🔄⚖️。这一机制具有以下关键特性：
+Through the dynamic博弈 (game-theoretic) and mutual supervision mechanism formed among multiple agents in the proposed MAD framework (Multi-Agent Debate), the system exhibits behavior patterns similar to "tit-for-tat" 🔄⚖️. This mechanism has the following key characteristics:
 
-- 一个智能体可能存在的推理偏差或认知扭曲 🤯，能够被其他智能体识别并纠正 ✅；
-- 个体对认知更新的抗拒倾向😬，可通过其他智能体的持续挑战 与引导得以缓解💪；
-- 各智能体之间可提供多样化的外部反馈 🔄💡，从而丰富整体推理过程。
+- **Reasoning biases or cognitive distortions** 🤯 that may exist in one agent can be identified and corrected ✅ by other agents;  
+- The tendency of individuals to resist cognitive updates 😬 can be mitigated 💪 through continuous challenges and guidance from other agents;  
+- Agents can provide **diversified external feedback** 🔄💡, thereby enriching the overall reasoning process.
 
-上述特性使得 MAD 框架相比单一模型的自我反思机制，更不容易陷入“思维退化”（Degeneration of Thoughts, DoT）问题 🚫🌀，同时能够更充分地激发和挖掘 LLMs 的推理潜能 🧠⚡。
+These features make the MAD framework less prone to the "**Degeneration of Thoughts (DoT)**" problem compared to self-reflection mechanisms in single models 🚫🌀, while also more effectively stimulating and tapping into the reasoning potential of LLMs 🧠⚡.
 
-实验结果表明，MAD 在反直觉问答（Counterintuitive QA）❓🧠 和常识推理多任务（Commonsense-MT）等领域中，均取得了显著且稳定的性能提升 📈✨！
+Experimental results show that MAD has achieved significant and stable performance improvements in tasks such as **Counterintuitive QA** ❓🧠 and **Commonsense Reasoning Multi-Task (Commonsense-MT)** 📈✨!
 
 ### 框架
 <div align="center">
     <img width="90%" alt="MAD" src="imgs/debate流程.jpg" />
-    <p class="image-caption">Figure 2: 流程图</p>
+    <p class="image-caption">Figure 2: flowchart</p>
 </div>
 
 
-## 运行
+## run
 
 **Preparation**
 
@@ -69,23 +69,21 @@
   pip3 install -r requirements.txt
   ```
 
-* 在 `interactive.py` 文件中，设置硅基流动的秘钥，执行交互脚本：
+* In the `interactive.py` file, set the secret key for silicon-based flow, and execute the interactive script: 
 
 ```shell
 python3 interactive.py
 ```
-
-
 ---
 
-## 主要结果
-#### 1、开放性话题:  
+## Main Results  
+#### 1. Open-ended Topics: 
 
 <span style="color: #e74c3c; font-weight: bold; font-size: 1.2em;">示例1. 中国股市在2025年下半年会有起色</span>
 
 
 <details>
-<summary><b>辩论过程</b></summary>
+<summary><b>Debate Process</b></summary>
 
 <img src="imgs/devil.png" width="30" alt="Affirmative" />: 通过工具检索相关中国股市的信息
 ```markdown
@@ -180,7 +178,7 @@ python3 interactive.py
 <span style="color: #e74c3c; font-weight: bold; font-size: 1.0em;">示例2. 传说中，古希腊英雄忒修斯乘坐的船被保存下来，随着时间推移，船上所有木板和零件都被逐渐替换成了新的。最终，这艘船已经没有任何一块原始的木板还保留在原位。问题：这艘船还是原来的那艘“忒修斯之船”吗？如果有人把所有换下来的旧木板重新组装成一艘船，那么哪一艘才是真正的“忒修斯之船”？</span>
 
 <details>
-<summary><b>辩论过程</b></summary>
+<summary><b>Debate Process</b></summary>
 
 <img src="imgs/devil.png" width="30" alt="Affirmative" />: 第一轮辩论
 ```markdown
@@ -339,7 +337,7 @@ python3 interactive.py
 
 
 <details>
-<summary><b>辩论过程</b></summary>
+<summary><b>Debate Process</b></summary>
 
 <img src="imgs/devil.png" width="30" alt="Affirmative" />: 
 ```markdown
