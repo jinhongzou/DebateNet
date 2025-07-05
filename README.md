@@ -53,8 +53,8 @@
 
 ### 框架
 <div align="center">
-    <img width="90%" alt="MAD" src="imgs/framework.png" />
-    <p class="image-caption">Figure 2: Framework of Multi-Agent Debate. Here we designate the devil (<img src="imgs/devil.png" width="25" />) as the affirmative side while the angel (<img src="imgs/angel.png" width="25" />) as the negative side. We want the angel to correct the devil’s mistakes..</p>
+    <img width="90%" alt="MAD" src="imgs/debate流程.jpg" />
+    <p class="image-caption">Figure 2: 流程图</p>
 </div>
 
 
@@ -77,13 +77,6 @@ python3 interactive.py
 
 
 ## 主要结果
-###### MAD
-
-<div align="center">
-    <img width="40%" alt="MAD" src="https://github.com/Skytliang/Multi-Agents-Debate/blob/main/imgs/mad_qa_case1.gif" />
-    <p class="image-caption">Figure 3: An Animation to Show the Process of MAD.</p>
-</div>
-
 ---
 
 #### 1、开放性话题:  

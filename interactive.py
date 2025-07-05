@@ -1,20 +1,3 @@
-"""
-MAD: Multi-Agent Debate with Large Language Models
-Copyright (C) 2023  The MAD Team
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-"""
 
 import os
 from pydantic_ai.common_tools.tavily import tavily_search_tool
@@ -33,23 +16,9 @@ tavily_api_key = os.getenv('TAVILY_API_KEY', 'your-default-key-if-any')
 siliconflow_api_key = os.getenv('SILICONFLOW_API_KEY', 'your-default-key-if-any')
 
 # 如果没有设置环境变量，可以提示用户或抛出异常
-if not tavily_api_key or not siliconflow_api_key:
-    raise ValueError("API keys not found. Please set TAVILY_API_KEY and SILICONFLOW_API_KEY environment variables.")
-'''
-def tavily_search_tool(api_key: str):
-    """Creates a Tavily search tool.
+if not siliconflow_api_key:
+    raise ValueError("API keys not found. Please set SILICONFLOW_API_KEY environment variables.")
 
-    Args:
-        api_key: The Tavily API key.
-
-            You can get one by signing up at [https://app.tavily.com/home](https://app.tavily.com/home).
-    """
-    return Tool(
-        TavilySearchTool(client=AsyncTavilyClient(api_key)).__call__,
-        name='tavily_search',
-        description='Searches Tavily for the given query and returns the results.',
-    )
-'''
 
 if __name__ == "__main__":
 
