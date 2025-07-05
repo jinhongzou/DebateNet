@@ -1,6 +1,10 @@
 import logfire
-# 'if-token-present' means nothing will be sent (and the example will work) if you don't have logfire configured
-logfire.configure(send_to_logfire='test', token='pylf_v1_us_bf1ZYDy0pFrLVvDFmTHDxFvsS53bRY1VdTzXKfN2dSR8')
-logfire.instrument_pydantic_ai()
+import os
 
-#logfire.info('found {flight_count} flights', flight_count=len(result.output))
+
+# 'if-token-present' means nothing will be sent (and the example will work) if you don't have logfire configured
+if os.getenv('LOGFILE_API_KEY')=='':
+    logfire.configure()
+else:
+    logfire.configure(send_to_logfire='test', token=os.getenv('LOGFILE_API_KEY', 'sk-xxx') )
+    logfire.instrument_pydantic_ai()

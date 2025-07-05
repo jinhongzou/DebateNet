@@ -13,7 +13,9 @@ load_dotenv()
 
 # 从环境变量中获取API密钥，如果没有设置则使用默认值（可选）
 tavily_api_key = os.getenv('TAVILY_API_KEY', 'your-default-key-if-any')
-siliconflow_api_key = os.getenv('SILICONFLOW_API_KEY', 'your-default-key-if-any')
+siliconflow_api_key = os.getenv('SILICONFLOW_API_KEY', 'sk-XXX')
+
+
 
 # 如果没有设置环境变量，可以提示用户或抛出异常
 if not siliconflow_api_key:
