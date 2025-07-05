@@ -10,7 +10,7 @@
   ——Multi-Agent Debate Framework Based on Large Language Models
 </p>
 
-## [English](README.md) | 简体中文
+## English| [简体中文](README_zh-CN.md) 
 
 ### ⚖️MAD Framework (Multi-Agent Debate): An Innovative Approach
 
