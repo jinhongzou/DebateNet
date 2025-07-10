@@ -13,12 +13,13 @@ load_dotenv()
 
 # 从环境变量中获取API密钥，如果没有设置则使用默认值（可选）
 tavily_api_key = os.getenv('TAVILY_API_KEY', 'your-default-key-if-any')
-siliconflow_api_key = os.getenv('SILICONFLOW_API_KEY', 'sk-XXX')
-
+model_name = os.getenv("MODEL_NAME", "your-model-name")
+base_url = os.getenv("OPENAI_BASE_URL", "your-base-url")
+api_key = os.getenv("OPENAI_API_KEY", "your-api-key")
 
 
 # 如果没有设置环境变量，可以提示用户或抛出异常
-if not siliconflow_api_key:
+if not api_key:
     raise ValueError("API keys not found. Please set SILICONFLOW_API_KEY environment variables.")
 
 
@@ -28,14 +29,14 @@ if __name__ == "__main__":
     MAD_path = current_script_path.rsplit("/", 1)[0]
 
     classifyagent = Classifier(#model='openai/Qwen/Qwen2.5-32B-Instruct', 
-                               model='openai/Qwen/Qwen2.5-7B-Instruct',
-                               api_key=siliconflow_api_key, 
-                               api_base='https://api.siliconflow.cn/v1')
+                               model=f'openai/{model_name}',
+                               api_key=api_key, 
+                               api_base=base_url)
 
     config =  debate_prompt_json()
     debate = Debate(max_round=3,
-                    model_name="Qwen/Qwen2.5-7B-Instruct",
-                    openai_api_key=siliconflow_api_key, 
+                    model_name=model_name,
+                    openai_api_key=api_key, 
                     #tools=[tavily_search_tool(tavily_api_key)],
                     config=config, 
                     temperature=0, 
